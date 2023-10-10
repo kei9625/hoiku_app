@@ -1,0 +1,2 @@
+module Parent::HomesHelper
+end

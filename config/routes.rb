@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :employee do
-    get 'homes/new'
-  end
+
   devise_for :parents, controllers: {
   registrations: "parent/registrations",
   sessions: 'parent/sessions'
@@ -11,5 +9,17 @@ Rails.application.routes.draw do
   registrations: "employee/registrations",
   sessions: 'employee/sessions'
   }
+
+  scope module: :parent do
+    resources :homes, only: [:index]
+
+  end
+
+  namespace :employee do
+    resources :homes, only: [:index]
+
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

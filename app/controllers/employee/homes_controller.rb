@@ -1,8 +1,6 @@
 class Employee::HomesController < ApplicationController
 
-  def top
+  def index
   end
 
-  def new
-  end
 end
