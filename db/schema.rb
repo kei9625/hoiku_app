@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_10_080154) do
+ActiveRecord::Schema.define(version: 2023_10_10_102208) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.date "date", null: false
+    t.datetime "drop_off"
+    t.datetime "pick_up"
+    t.text "note"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "employees", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +40,23 @@ ActiveRecord::Schema.define(version: 2023_10_10_080154) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "kids", force: :cascade do |t|
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.integer "barth_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "content", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "parents", force: :cascade do |t|
