@@ -11,18 +11,20 @@
   </head>
 
   <header>
-    <% if employee_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_employee_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_employee_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_employee_session_path %>
-      </li>
-    <% end %>
+<header>
+  <% if employee_signed_in? %>
+    <li><%= link_to "ログアウト", destroy_employee_session_path, method: :delete %></li>
+    <li><%= link_to "職員 マイページ", employee_mypage_path %></li>
+  <% elsif parent_signed_in? %>
+    <li><%= link_to "ログアウト", destroy_parent_session_path, method: :delete %></li>
+    <li><%= link_to "保護者 マイページ", mypage_path %></li>
+  <% else %>
+    <li><%= link_to "職員 新規登録", new_employee_registration_path %></li>
+    <li><%= link_to "職員 ログイン", new_employee_session_path %></li>
+    <li><%= link_to "保護者 新規登録", new_parent_registration_path %></li>
+    <li><%= link_to "保護者 ログイン", new_parent_session_path %></li>
+  <% end %>
+</header>
 
   <body>
     <%= yield %>
