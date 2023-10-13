@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   }
 
   namespace :employee do
-    resource :mypage, only: [:show, :edit, :update]
+    resources :mypage, only: [:show, :edit, :update]
     resources :homes, only: [:index]
   end
 

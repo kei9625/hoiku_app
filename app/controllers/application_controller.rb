@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.is_a?(Employee)
       employee_homes_path
-    elsif resource.is_a?(Parent)
+    elsif resource.is_a5?(Parent)
       homes_path
     else
       root_path
