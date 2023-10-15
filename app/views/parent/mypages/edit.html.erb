@@ -1,2 +1,44 @@
-<h1>Parent::Mypage#edit</h1>
-<p>Find me in app/views/parent/mypage/edit.html.erb</p>
+<h1>保護者様用Parent::Mypage#edit</h1>
+<h1>登録情報編集 <%= @parent.first_name %> <%= @parent.last_name %>'s Information</h1>
+
+<%= form_with model: @parent, url: mypage_path, method: :patch, local: true do |f| %>
+
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= f.label :last_name_kana %><br>
+    <%= f.text_field :last_name_kana %>
+  </p>
+
+  <p>
+    <%= f.label :first_name_kana %><br>
+    <%= f.text_field :first_name_kana %>
+  </p>
+
+  <p>
+    <%= f.label :postal_code %><br>
+    <%= f.text_field :postal_code %>
+  </p>
+
+  <p>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </p>
+
+  <%= f.submit "登録情報更新" %>
+<% end %>
+
+<%= link_to 'Back to Mypage', mypage_path, class: 'button' %>

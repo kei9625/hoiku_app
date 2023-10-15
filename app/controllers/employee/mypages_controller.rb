@@ -6,6 +6,7 @@ class Employee::MypagesController < ApplicationController
   end
 
   def edit
+    
   end
 
   # 他のアクションもここに追加

@@ -11,17 +11,13 @@ Rails.application.routes.draw do
   }
 
   namespace :employee do
-    resources :mypage, only: [:show, :edit, :update]
-    resources :homes, only: [:index]
-  end
-
-
-  scope module: :parent do
     resource :mypages, only: [:show, :edit, :update]
     resources :homes, only: [:index]
   end
 
-
-
+  scope module: :parent do
+    resource :mypage, only: [:show, :edit, :update]
+    resources :homes, only: [:index]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

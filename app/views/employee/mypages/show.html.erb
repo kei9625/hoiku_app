@@ -2,13 +2,13 @@
 <!--自分の情報の表示-->
 <h1><%= @employee.first_name %> <%= @employee.last_name %>'s Mypage</h1>
 
-<p><strong>姓：</strong><%= @employee.last_name %></p>
-<p><strong>名：</strong><%= @employee.first_name %></p>
-<p><strong>姓（カナ）：</strong><%= @employee.last_name_kana %></p>
-<p><strong>名（カナ）：</strong><%= @employee.first_name_kana %></p>
-<p><strong>郵便番号：</strong><%= @employee.postal_code %></p>
-<p><strong>住所：</strong><%= @employee.address %></p>
-<p><strong>電話番号：</strong><%= @employee.phone_number %></p>
+<p><strong>姓：</strong> <%= @employee.last_name %></p>
+<p><strong>名：</strong> <%= @employee.first_name %></p>
+<p><strong>姓（カナ）：</strong> <%= @employee.last_name_kana %></p>
+<p><strong>名（カナ）：</strong> <%= @employee.first_name_kana %></p>
+<p><strong>郵便番号：</strong> <%= @employee.postal_code %></p>
+<p><strong>住所：</strong> <%= @employee.address %></p>
+<p><strong>電話番号：</strong> <%= @employee.phone_number %></p>
 
 <%= link_to 'ホームに戻る', employee_homes_path, class: 'button' %>
-<%= link_to '情報を編集する', edit_employee_mypage_path, class: 'button' %>
+<%= link_to '情報を編集する', edit_employee_mypages_path, class: 'button' %>
