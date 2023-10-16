@@ -1,5 +1,5 @@
 class Parent::MypagesController < ApplicationController
-  before_action :authenticate_parent!
+before_action :authenticate_parent!
 
   def show
     @parent = current_parent
@@ -12,7 +12,7 @@ class Parent::MypagesController < ApplicationController
   def update
     @parent = current_parent
     if @parent.update(parent_params)
-      redirect_to mypage_path, notice: 'Information was successfully updated.'
+      redirect_to mypage_path, notice: '情報を更新しました。'
     else
       render :edit
     end
