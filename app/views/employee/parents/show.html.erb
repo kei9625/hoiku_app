@@ -1,4 +1,14 @@
-<h1>Employee::Parents#show</h1>
-<!--職員が保護者を可能であればクラス毎に一覧で確認するページ。名前を選択して保護者の情報を編集可能にする-->
-<!---->
-<p>Find me in app/views/employee/parents/show.html.erb</p>
+<h1>職員用　保護者情報::Parents#show</h1>
+<h1><%= @parent.first_name %> <%= @parent.last_name %>'s 詳細ページ</h1>
+
+<p><strong>姓：</strong><%= @parent.last_name %></p>
+<p><strong>名：</strong><%= @parent.first_name %></p>
+<p><strong>姓（カナ）：</strong><%= @parent.last_name_kana %></p>
+<p><strong>名（カナ）：</strong><%= @parent.first_name_kana %></p>
+<p><strong>郵便番号：</strong><%= @parent.postal_code %></p>
+<p><strong>住所：</strong><%= @parent.address %></p>
+<p><strong>電話番号：</strong><%= @parent.phone_number %></p>
+
+<%= link_to '情報を編集する', edit_employee_parent_path(@parent), class: 'button' %>
+
+<%= link_to '保護者一覧へ', employee_parents_path, class: 'button' %>
