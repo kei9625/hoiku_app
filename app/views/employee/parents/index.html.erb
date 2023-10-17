@@ -1,0 +1,8 @@
+<h1>保護者一覧</h1>
+<ul>
+  <% @parents.each do |parent| %>
+    <li>
+      <%= link_to "#{parent.first_name} #{parent.last_name}", employee_parent_path(parent) %>
+    </li>
+  <% end %>
+</ul>
