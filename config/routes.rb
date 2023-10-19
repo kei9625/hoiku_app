@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :parents, path: 'parent', controllers: {
   registrations: "parent/registrations",
   sessions: 'parent/sessions'
