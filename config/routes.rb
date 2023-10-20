@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   scope module: :parent do
     resource :mypage, only: [:show, :edit, :update]
+    
     resources :homes, only: [:index]
     resources :notes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end

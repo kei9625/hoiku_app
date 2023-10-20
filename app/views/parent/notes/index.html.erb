@@ -1,2 +1,14 @@
 <h1>Parent::Notes#index</h1>
-<p>Find me in app/views/parent/notes/index.html.erb</p>
+<h1>連絡帳一覧</h1>
+
+<%= link_to '新しい連絡帳を作成', new_parent_note_path(@parent) %>
+
+<ul>
+  <% @notes.each do |note| %>
+    <li>
+      <%= link_to note.title, parent_note_path(@parent, note) %>
+      <%= link_to '編集', edit_parent_note_path(@parent, note) %>
+      <%= link_to '削除', parent_note_path(@parent, note), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    </li>
+  <% end %>
+</ul>
