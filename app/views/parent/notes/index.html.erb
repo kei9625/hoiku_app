@@ -1,14 +1,25 @@
 <h1>Parent::Notes#index</h1>
 <h1>連絡帳一覧</h1>
 
-<%= link_to '新しい連絡帳を作成', new_parent_note_path(@parent) %>
+<h1>連絡帳</h1>
 
-<ul>
-  <% @notes.each do |note| %>
-    <li>
-      <%= link_to note.title, parent_note_path(@parent, note) %>
-      <%= link_to '編集', edit_parent_note_path(@parent, note) %>
-      <%= link_to '削除', parent_note_path(@parent, note), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-    </li>
-  <% end %>
-</ul>
+<%= link_to '新しい連絡帳を作成', new_note_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= link_to note.title, note_path(note) %></td>
+        <td>
+          <%= link_to '編集', edit_note_path(note) %> |
+          <%= link_to '削除', note_path(note), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
