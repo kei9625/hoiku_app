@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_10_102208) do
+ActiveRecord::Schema.define(version: 2023_10_23_082353) do
 
   create_table "attendances", force: :cascade do |t|
     t.date "date", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2023_10_10_102208) do
   end
 
   create_table "kids", force: :cascade do |t|
+    t.integer "parent_id", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name_kana", default: "", null: false
@@ -50,6 +51,9 @@ ActiveRecord::Schema.define(version: 2023_10_10_102208) do
     t.integer "barth_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "gender"
+    t.text "allergy_info"
+    t.text "health_info"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -57,6 +61,8 @@ ActiveRecord::Schema.define(version: 2023_10_10_102208) do
     t.text "content", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "parent_id", null: false
+    t.index ["parent_id"], name: "index_notes_on_parent_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -79,4 +85,5 @@ ActiveRecord::Schema.define(version: 2023_10_10_102208) do
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notes", "parents"
 end
