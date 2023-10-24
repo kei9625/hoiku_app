@@ -14,9 +14,13 @@ class Parent::NotesController < ApplicationController
 
   def create
     @note = current_parent.notes.build(note_params)
+    
+    
+    
     if @note.save
       redirect_to parent_notes_path, notice: '連絡帳を作成しました'
     else
+      puts @note.errors.full_messages
       render :new
     end
   end

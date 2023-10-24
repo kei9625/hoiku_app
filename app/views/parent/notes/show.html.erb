@@ -1,2 +1,5 @@
 <h1>Parent::Notes#show</h1>
-<p>Find me in app/views/parent/notes/show.html.erb</p>
+<h1><%= @note.title %></h1>
+<p><%= @note.content %></p>
+<%= link_to '編集', edit_note_path(@note) %> |
+<%= link_to '一覧に戻る', notes_path %>

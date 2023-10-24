@@ -1,2 +1,4 @@
 <h1>Parent::Notes#new</h1>
-<p>Find me in app/views/parent/notes/new.html.erb</p>
+<h1>新しい連絡帳を作成</h1>
+<%= render 'form', note: @note %>
+<%= link_to 'キャンセル', notes_path %>
