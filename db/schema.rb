@@ -13,6 +13,9 @@
 ActiveRecord::Schema.define(version: 2023_10_23_082353) do
 
   create_table "attendances", force: :cascade do |t|
+    t.integer "kid_id", null: false
+    t.integer "parent_id"
+    t.integer "employee_id"
     t.date "date", null: false
     t.datetime "drop_off"
     t.datetime "pick_up"
@@ -43,12 +46,13 @@ ActiveRecord::Schema.define(version: 2023_10_23_082353) do
   end
 
   create_table "kids", force: :cascade do |t|
+    t.integer "employee_id"
     t.integer "parent_id", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name_kana", default: "", null: false
     t.string "first_name_kana", default: "", null: false
-    t.integer "barth_date", null: false
+    t.date "birth_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "gender"
@@ -57,12 +61,13 @@ ActiveRecord::Schema.define(version: 2023_10_23_082353) do
   end
 
   create_table "notes", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "kid_id"
+    t.integer "parent_id"
     t.string "title", default: "", null: false
     t.text "content", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id", null: false
-    t.index ["parent_id"], name: "index_notes_on_parent_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -85,5 +90,4 @@ ActiveRecord::Schema.define(version: 2023_10_23_082353) do
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "notes", "parents"
 end

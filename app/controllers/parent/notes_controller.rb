@@ -14,11 +14,11 @@ class Parent::NotesController < ApplicationController
 
   def create
     @note = current_parent.notes.build(note_params)
-    
-    
-    
+
+
+
     if @note.save
-      redirect_to parent_notes_path, notice: '連絡帳を作成しました'
+      redirect_to note_path(@note.id), notice: '連絡帳を作成しました'
     else
       puts @note.errors.full_messages
       render :new
@@ -38,7 +38,7 @@ class Parent::NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to parent_notes_path, notice: '連絡帳を削除しました'
+    redirect_to notes_path, notice: '連絡帳を削除しました'
   end
 
   private
