@@ -1,5 +1,6 @@
 <h1>Parent::Notes#show</h1>
 <h1><%= @note.title %></h1>
+<p>担任の先生: <%= @note.employee.full_name %></p>
 <p><%= @note.content %></p>
 <%= link_to '編集', edit_note_path(@note) %> |
 <%= link_to '一覧に戻る', notes_path %>

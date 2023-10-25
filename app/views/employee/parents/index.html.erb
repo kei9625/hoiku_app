@@ -2,7 +2,7 @@
 <ul>
   <% @parents.each do |parent| %>
     <li>
-      <%= link_to "#{parent.first_name} #{parent.last_name}", employee_parent_path(parent) %>
+      <%= link_to "#{parent.last_name} #{parent.first_name} ", employee_parent_path(parent) %>
     </li>
   <% end %>
 </ul>

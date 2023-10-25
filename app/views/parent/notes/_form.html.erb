@@ -1,3 +1,4 @@
+<!--部分テンプレート-->
 <% if @note.errors.any? %>
   <div id="error_explanation">
     <h2><%= @note.errors.count %>つのエラーが発生しました:</h2>
@@ -10,6 +11,10 @@
 <% end %>
 
 <%= form_with(model: note) do |f| %>
+  <div>
+    <%= f.label :employee_id, '担任の先生' %>
+    <%= f.collection_select :employee_id, @employees, :id, :full_name %>
+  </div>
   <div>
     <%= f.label :title, 'タイトル' %>
     <%= f.text_field :title %>

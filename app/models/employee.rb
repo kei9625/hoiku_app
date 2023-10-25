@@ -5,4 +5,7 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :attendances
+         def full_name
+           "#{last_name} #{first_name}"
+         end
 end

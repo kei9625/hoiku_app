@@ -6,4 +6,7 @@ class Parent < ApplicationRecord
 
          has_many :notes, dependent: :destroy
          has_many :kids, dependent: :destroy
+         def full_name
+           "#{last_name} #{first_name}"
+         end
 end

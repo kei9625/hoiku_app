@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   devise_for :parents, path: 'parent', controllers: {
   registrations: "parent/registrations",
   sessions: 'parent/sessions'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
     resource :mypage, only: [:show, :edit, :update]
     resources :homes, only: [:index]
     resources :parents, only: [:index, :show, :edit, :update]
+    resources :notes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
 
   scope module: :parent do
