@@ -1,0 +1,23 @@
+show_parent_notes.html.erb
+<h1><%= @parent.full_name %> の連絡帳</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.title %></td>
+        <td><%= note.content.truncate(30) %></td>
+        <td><%= link_to 'Show', employee_note_path(note) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '戻る', employee_notes_path %>

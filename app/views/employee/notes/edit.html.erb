@@ -1,2 +1,6 @@
 <h1>Employee::Notes#edit</h1>
-<p>Find me in app/views/employee/notes/edit.html.erb</p>
+<h1>連絡帳を編集: <%= @note.title %></h1>
+
+<%= render 'form' %>
+
+<%= link_to '戻る', employee_notes_path %>

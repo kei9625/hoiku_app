@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     resource :mypage, only: [:show, :edit, :update]
     resources :homes, only: [:index]
     resources :parents, only: [:index, :show, :edit, :update]
-    resources :notes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :notes do
+      collection do
+        get 'parent/:parent_id', to: 'notes#show_parent_notes', as: 'parent_notes'
+      end
+    end
   end
 
   scope module: :parent do

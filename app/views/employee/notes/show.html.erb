@@ -1,2 +1,7 @@
 <h1>Employee::Notes#show</h1>
-<p>Find me in app/views/employee/notes/show.html.erb</p>
+<h1><%= @note.title %> (作成者: <%= @note.creator.full_name %>)</h1>
+
+<p><strong>内容:</strong> <%= @note.content %></p>
+
+<%= link_to '戻る', employee_notes_path %>
+<%= link_to '編集', edit_employee_note_path(@note) %>
