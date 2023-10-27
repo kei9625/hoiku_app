@@ -4,4 +4,5 @@
 <p><strong>内容:</strong> <%= @note.content %></p>
 
 <%= link_to '戻る', employee_notes_path %>
+<%= link_to '削除', employee_note_path(@note), method: :delete, data: { confirm: '連絡帳を削除してもよろしいですか？' } %>
 <%= link_to '編集', edit_employee_note_path(@note) %>
