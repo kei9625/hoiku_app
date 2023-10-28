@@ -1,23 +1,30 @@
 class Employee::NotesController < ApplicationController
+  before_action :authenticate_employee!
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_employee, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_employee, only: [:show, :edit, :update, :destroy]
 
   def index
     @notes = current_employee.notes
+    @parents = Parent.all
+  end
+
+  def show_parent_notes
+    @parent = Parent.find(params[:parent_id]) # IDの取得の仕方を修正
+    @notes = @parent.notes
   end
 
   def show
   end
 
+  # 新しい連絡帳を作成するためのアクション
   def new
     @note = Note.new
     @parents = Parent.all  # 保護者の情報を全て取得
   end
 
-
+  # 連絡帳をデータベースに保存するためのアクション
   def create
-    @note = Note.new(note_params)
-    @note.employee = current_employee
+    @note = current_employee.notes.build(note_params)
 
     if @note.save
       redirect_to employee_note_path(@note), notice: '連絡帳を作成しました'
@@ -54,7 +61,7 @@ class Employee::NotesController < ApplicationController
   end
 
   def set_note
-    @note = Note.find(params[:id])
+    @note = current_employee.notes.find(params[:id])
   end
 
   def note_params

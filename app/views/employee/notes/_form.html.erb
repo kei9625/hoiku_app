@@ -1,4 +1,4 @@
-<%= form_with model: @note, local: true do |f| %>
+<%= form_with model: @note, url: employee_notes_path, local: true do |f| %>
   <div>
     <%= f.label :parent_id, "保護者を選択" %>
     <%= f.collection_select :parent_id, @parents, :id, :full_name %>

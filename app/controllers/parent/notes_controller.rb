@@ -1,6 +1,6 @@
 class Parent::NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_parent, only: [:show]
+  before_action :ensure_correct_parent, only: [:show, :edit, :update, :destroy]
   def index
     @notes = current_parent.notes
   end
