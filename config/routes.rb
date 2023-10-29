@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :employee do
+    get 'kids/new'
+    get 'kids/edit'
+  end
+  namespace :parent do
+    get 'kids/new'
+    get 'kids/edit'
+  end
   devise_for :parents, path: 'parent', controllers: {
   registrations: "parent/registrations",
   sessions: 'parent/sessions'
