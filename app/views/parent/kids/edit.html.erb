@@ -1,2 +1,3 @@
-<h1>Parent::Kids#edit</h1>
-<p>Find me in app/views/parent/kids/edit.html.erb</p>
+<h1>お子様の情報編集</h1>
+<%= render 'form', kid: @kid %>
+<%= link_to '戻る', parent_path(@parent) %>

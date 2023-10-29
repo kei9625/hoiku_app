@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :employee do
-    get 'kids/new'
-    get 'kids/edit'
-  end
-  namespace :parent do
-    get 'kids/new'
-    get 'kids/edit'
-  end
   devise_for :parents, path: 'parent', controllers: {
   registrations: "parent/registrations",
   sessions: 'parent/sessions'
@@ -22,6 +14,7 @@ Rails.application.routes.draw do
     resource :mypage, only: [:show, :edit, :update]
     resources :homes, only: [:index]
     resources :parents, only: [:index, :show, :edit, :update]
+    resources :kids
     resources :notes do
       collection do
         get 'parent/:parent_id', to: 'notes#show_parent_notes', as: 'parent_notes'
@@ -33,6 +26,7 @@ Rails.application.routes.draw do
     resource :mypage, only: [:show, :edit, :update]
     resources :homes, only: [:index]
     resources :notes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :kids
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

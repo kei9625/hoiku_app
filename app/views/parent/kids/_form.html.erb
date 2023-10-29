@@ -1,0 +1,56 @@
+<!--部分テンプレート　_form.html.erb-->
+<% if @kid.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@kid.errors.count, "error") %> <%= t('errors.prohibited_this_kid_from_being_saved') %></h2>
+    <ul>
+      <% @kid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :性 %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :名 %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :セイ %>
+    <%= f.text_field :last_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メイ %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :生年月日 %>
+    <%= f.date_select :birth_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :性別 %>
+    <%= f.select :gender, ['男', '女'], prompt: '性別を選択' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :アレルギーの有無 %>
+    <%= f.text_area :allergy_info %>
+  </div>
+
+  <!--<div class="field">-->
+  <!--  %= f.label :health_info %>-->
+  <!--  %= f.text_area :health_info %>-->
+  <!--</div>-->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

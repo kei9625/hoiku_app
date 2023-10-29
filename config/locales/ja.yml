@@ -2,10 +2,20 @@ ja:
   activerecord:
     models:
       note: 連絡帳
+      kid: お子様
     attributes:
       note:
         title: タイトル
         content: 内容
+      kid:
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓(カナ)
+        first_name_kana: 名(カナ)
+        birth_date: 生年月日
+        gender: 性別
+        allergy_info: アレルギー情報
+        health_info: 健康情報
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -22,7 +32,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -48,7 +58,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月

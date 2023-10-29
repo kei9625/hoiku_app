@@ -11,6 +11,24 @@
 <p><strong>住所：</strong><%= @parent.address %></p>
 <p><strong>電話番号：</strong><%= @parent.phone_number %></p>
 
-<%= link_to 'ホームに戻る', homes_path, class: 'button' %>
 
-<%= link_to '情報を編集する', edit_mypage_path(@parent), class: 'button' %>
+<%= link_to '保護者情報を編集する', edit_mypage_path(@parent), class: 'button' %>
+
+<h2>お子様の情報</h2>
+
+<% @kids.each do |kid| %>
+  <h3><%= kid.first_name %> <%= kid.last_name %></h3>
+  <p><strong>姓：</strong><%= kid.last_name %></p>
+  <p><strong>名：</strong><%= kid.first_name %></p>
+  <p><strong>姓（カナ）：</strong><%= kid.last_name_kana %></p>
+  <p><strong>名（カナ）：</strong><%= kid.first_name_kana %></p>
+  <p><strong>生年月日：</strong><%= kid.birth_date %></p>
+  <p><strong>性別：</strong><%= kid.gender %></p>
+  <p><strong>アレルギー情報：</strong><%= kid.allergy_info %></p>
+
+  <%= link_to 'お子様の情報を編集する', edit_parent_kid_path(@parent, kid), class: 'button' %>
+  <hr>
+<% end %>
+
+<%= link_to '新しくお子様を追加する', new_parent_kid_path(@parent), class: 'button' %>
+<%= link_to 'ホームに戻る', homes_path, class: 'button' %>
