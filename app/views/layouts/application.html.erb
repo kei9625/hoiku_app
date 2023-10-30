@@ -10,20 +10,29 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
 <header>
   <% if employee_signed_in? %>
-    <li><%= link_to "ログアウト", destroy_employee_session_path, method: :delete %></li>
-    <li><%= link_to "職員 マイページ", employee_mypage_path %></li>
-    <li><%= link_to 'ホームに戻る', employee_homes_path, class: 'button' %></li>
+    <%# if controller_name == "employee" %>
+      <li><%= link_to "ログアウト", destroy_employee_session_path, method: :delete %></li>
+      <li><%= link_to "職員 マイページ", employee_mypage_path %></li>
+      <li><%= link_to 'ホームに戻る', employee_homes_path, class: 'button' %></li>
+    <%# end %>
+
   <% elsif parent_signed_in? %>
-    <li><%= link_to "ログアウト", destroy_parent_session_path, method: :delete %></li>
-    <li><%= link_to "保護者 マイページ", mypage_path %></li>
+    <%# if controller_name == "parent" %>
+      <li><%= link_to "ログアウト", destroy_parent_session_path, method: :delete %></li>
+      <li><%= link_to "保護者 マイページ", mypage_path %></li>
+      <li><%= link_to "ホームに戻る", homes_path %> </li>
+    <%# end %>
+
   <% else %>
-    <li><%= link_to "職員 新規登録", new_employee_registration_path %></li>
-    <li><%= link_to "職員 ログイン", new_employee_session_path %></li>
-    <li><%= link_to "保護者 新規登録", new_parent_registration_path %></li>
-    <li><%= link_to "保護者 ログイン", new_parent_session_path %></li>
+    <% if request.fullpath.include?("employee") %>
+      <li><%= link_to "職員 新規登録", new_employee_registration_path %></li>
+      <li><%= link_to "職員 ログイン", new_employee_session_path %></li>
+    <% elsif request.fullpath.include?("parent") %>
+      <li><%= link_to "保護者 新規登録", new_parent_registration_path %></li>
+      <li><%= link_to "保護者 ログイン", new_parent_session_path %></li>
+    <% end %>
   <% end %>
 </header>
 

@@ -17,7 +17,7 @@ class Parent::AttendancesController < ApplicationController
           ## @attendance = tmp_attendance
           ## @attendance.drop_off = Time.now
           ## @attendance.save!
-          ## redirect_to_homes_path
+          ## redirect_to homes_path
           ## return
           # TODO: flashでメッセージは入れた方がよい
           redirect_to homes_path
@@ -50,6 +50,10 @@ class Parent::AttendancesController < ApplicationController
   end
   
   def update
+  end
+  
+  def destroy
+    # もし間違って登園してしまった場合は、attendance/showで「取り消しボタン(destroy)でレコードを削除」を作成するとUI的に優しい
   end
   
   private
