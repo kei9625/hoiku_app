@@ -3,6 +3,7 @@ before_action :authenticate_parent!
 
   def show
     @parent = current_parent
+    @kids = @parent.kids
   end
 
   def edit

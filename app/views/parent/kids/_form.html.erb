@@ -10,39 +10,40 @@
   </div>
 <% end %>
 
+
   <div class="field">
-    <%= f.label :性 %>
-    <%= f.text_field :last_name %>
+      <%= f.label :性 %>
+      <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%= f.label :名 %>
-    <%= f.text_field :first_name %>
+      <%= f.label :名 %>
+      <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :セイ %>
-    <%= f.text_field :last_name_kana %>
+      <%= f.label :セイ %>
+      <%= f.text_field :last_name_kana %>
   </div>
 
   <div class="field">
-    <%= f.label :メイ %>
-    <%= f.text_field :first_name_kana %>
+      <%= f.label :メイ %>
+      <%= f.text_field :first_name_kana %>
   </div>
 
   <div class="field">
-    <%= f.label :生年月日 %>
-    <%= f.date_select :birth_date %>
+      <%= f.label :生年月日 %>
+      <%= f.date_select :birth_date %>
   </div>
 
   <div class="field">
-    <%= f.label :性別 %>
-    <%= f.select :gender, ['男', '女'], prompt: '性別を選択' %>
+      <%= f.label :性別 %>
+      <%= f.select :gender, ['男', '女'], prompt: '性別を選択' %>
   </div>
 
   <div class="field">
-    <%= f.label :アレルギーの有無 %>
-    <%= f.text_area :allergy_info %>
+      <%= f.label :アレルギーの有無 %>
+      <%= f.text_area :allergy_info %>
   </div>
 
   <!--<div class="field">-->
@@ -51,6 +52,5 @@
   <!--</div>-->
 
   <div class="actions">
-    <%= f.submit %>
+      <%= f.submit %>
   </div>
-<% end %>

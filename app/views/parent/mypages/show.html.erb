@@ -1,34 +1,38 @@
 <h1>保護者マイページ　詳細　Parent::Mypage#show</h1>
-<h1><%= @parent.first_name %> <%= @parent.last_name %>'s Mypage</h1>
+<h1><%= @parent.first_name %> <%= @parent.last_name %>さんのマイページ</h1>
 
-<h1>マイページ</h1>
+<section class="parent-info">
+  <h2>保護者情報</h2>
+  <p><strong>姓：</strong><%= @parent.last_name %></p>
+  <p><strong>名：</strong><%= @parent.first_name %></p>
+  <p><strong>姓（カナ）：</strong><%= @parent.last_name_kana %></p>
+  <p><strong>名（カナ）：</strong><%= @parent.first_name_kana %></p>
+  <p><strong>郵便番号：</strong><%= @parent.postal_code %></p>
+  <p><strong>住所：</strong><%= @parent.address %></p>
+  <p><strong>電話番号：</strong><%= @parent.phone_number %></p>
+  <%= link_to '保護者情報を編集する', edit_mypage_path(@parent), class: 'button' %>
+</section>
 
-<p><strong>姓：</strong><%= @parent.last_name %></p>
-<p><strong>名：</strong><%= @parent.first_name %></p>
-<p><strong>姓（カナ）：</strong><%= @parent.last_name_kana %></p>
-<p><strong>名（カナ）：</strong><%= @parent.first_name_kana %></p>
-<p><strong>郵便番号：</strong><%= @parent.postal_code %></p>
-<p><strong>住所：</strong><%= @parent.address %></p>
-<p><strong>電話番号：</strong><%= @parent.phone_number %></p>
+<section class="kids-info">
+  <h2>お子様の情報</h2>
+  <% @kids.each do |kid| %>
+    <div class="kid-info">
+      <h3><%= kid.first_name %> <%= kid.last_name %></h3>
+      <p><strong>姓：</strong><%= kid.last_name %></p>
+      <p><strong>名：</strong><%= kid.first_name %></p>
+      <p><strong>姓（カナ）：</strong><%= kid.last_name_kana %></p>
+      <p><strong>名（カナ）：</strong><%= kid.first_name_kana %></p>
+      <p><strong>生年月日：</strong><%= kid.birth_date %></p>
+      <p><strong>性別：</strong><%= kid.gender %></p>
+      <p><strong>アレルギー情報：</strong><%= kid.allergy_info %></p>
+      <%= link_to 'お子様の情報を編集する', edit_parent_kid_path(@parent, kid), class: 'button' %>
+    </div>
+    <hr>
+  <% end %>
 
+  <%= link_to '新しくお子様を追加する', new_parent_kid_path(parent_id: @parent.id), class: 'button' %>
+</section>
 
-<%= link_to '保護者情報を編集する', edit_mypage_path(@parent), class: 'button' %>
-
-<h2>お子様の情報</h2>
-
-<% @kids.each do |kid| %>
-  <h3><%= kid.first_name %> <%= kid.last_name %></h3>
-  <p><strong>姓：</strong><%= kid.last_name %></p>
-  <p><strong>名：</strong><%= kid.first_name %></p>
-  <p><strong>姓（カナ）：</strong><%= kid.last_name_kana %></p>
-  <p><strong>名（カナ）：</strong><%= kid.first_name_kana %></p>
-  <p><strong>生年月日：</strong><%= kid.birth_date %></p>
-  <p><strong>性別：</strong><%= kid.gender %></p>
-  <p><strong>アレルギー情報：</strong><%= kid.allergy_info %></p>
-
-  <%= link_to 'お子様の情報を編集する', edit_parent_kid_path(@parent, kid), class: 'button' %>
-  <hr>
-<% end %>
-
-<%= link_to '新しくお子様を追加する', new_parent_kid_path(@parent), class: 'button' %>
-<%= link_to 'ホームに戻る', homes_path, class: 'button' %>
+<section class="navigation-links">
+  <%= link_to 'ホームに戻る', homes_path, class: 'button' %>
+</section>

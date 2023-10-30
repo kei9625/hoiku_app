@@ -1,6 +1,5 @@
 class Parent::KidsController < ApplicationController
   before_action :set_parent
-  before_action :set_kid, only: [:show, :edit, :update, :destroy]
 
   def new
     @kid = @parent.kids.new
@@ -9,38 +8,32 @@ class Parent::KidsController < ApplicationController
   def create
     @kid = @parent.kids.new(kid_params)
     if @kid.save
-      redirect_to parent_kid_path(@parent, @kid), notice: 'お子様の情報が正常に登録されました。'
+      redirect_to mypage_path(@parent, @kid), notice: 'お子様の情報が正常に登録されました。'
     else
       render :new
     end
   end
 
   def edit
-    # before_actionで@kidを設定
+    @kid = @parent.kids.find(params[:id])
   end
 
   def update
+    @kid = @parent.kids.find(params[:id])
     if @kid.update(kid_params)
-      redirect_to parent_kid_path(@parent, @kid), notice: 'お子様の情報が正常に更新されました。'
+      redirect_to mypage_path(@parent, @kid), notice: 'お子様の情報が正常に更新されました。'
     else
       render :edit
     end
   end
 
-  def show
-    # before_actionで@kidを設定
-  end
-
   def destroy
+    @kid = @parent.kids.find(params[:id])
     @kid.destroy
-    redirect_to parent_kids_url(@parent), notice: 'お子様の情報が正常に削除されました。'
+    redirect_to parent_kids_path(@parent), notice: 'お子様の情報が正常に削除されました。'
   end
 
   private
-
-  def set_kid
-    @kid = @parent.kids.find(params[:id])
-  end
 
   def set_parent
     @parent = Parent.find(params[:parent_id])

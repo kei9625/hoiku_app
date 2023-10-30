@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     resource :mypage, only: [:show, :edit, :update]
     resources :homes, only: [:index]
     resources :notes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :kids
+
+    resources :parents do
+      resources :kids
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
