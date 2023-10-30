@@ -1,6 +1,32 @@
 <h1>Parent::Homes#index</h1>
 
-<%= link_to '連絡帳一覧', notes_path(@parent) %>
-<br>
-<%= link_to '新規連絡帳作成', new_note_path(@parent) %>
+  <%= link_to '連絡帳一覧', notes_path(@parent) %><br>
+  <%= link_to '新規連絡帳作成', new_note_path(@parent) %><br>
+
+<div>
+  <p id="realtime"></p><br>
+  <%= form_with model: @attendance, url: parent_attandance_create_path(current_parent.id), method: :post, local: true do |f| %>
+
+  <p>
+    <label for="note">メモ（本日の体調や予定お迎え時間など）:</label>
+    <%= f.text_field :note %>
+  </p>
+  <%= f.select :kid_id, options_from_collection_for_select(current_parent.kids, :id, :first_name) %>
+  <%= f.select :checkout, {"登園" => "drop_off", "降園" => "pick_up"} %>
+  <%= f.submit "記録" %>
+  <% end %>
+
+</div>
+
+  <script>
+    function showClock() {
+      let nowTime = new Date();
+      let nowHour = nowTime.getHours();
+      let nowMin  = nowTime.getMinutes();
+      let nowSec  = nowTime.getSeconds();
+      let msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
+      document.getElementById("realtime").innerHTML = msg;
+    }
+    setInterval('showClock()',1000);
+  </script>
 

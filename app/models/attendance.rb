@@ -1,5 +1,5 @@
 class Attendance < ApplicationRecord
   belongs_to :kid
-  belongs_to :parent
-  belongs_to :employee
+  belongs_to :parent, optional: true
+  belongs_to :employee, optional: true
 end
