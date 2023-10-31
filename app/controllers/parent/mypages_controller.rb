@@ -13,7 +13,8 @@ before_action :authenticate_parent!
   def update
     @parent = current_parent
     if @parent.update(parent_params)
-      redirect_to mypage_path, notice: '情報を更新しました。'
+      flash[:notice] = "情報を更新しました。"
+      redirect_to mypage_path
     else
       render :edit
     end

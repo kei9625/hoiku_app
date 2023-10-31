@@ -12,7 +12,8 @@ class Employee::MypagesController < ApplicationController
   def update
     @employee = current_employee
     if @employee.update(employee_params)
-      redirect_to employee_mypage_path, notice: "情報を更新しました。"
+      flash[:notice] = "情報を更新しました。"
+      redirect_to employee_mypage_path
     else
       render :edit
     end

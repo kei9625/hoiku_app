@@ -38,6 +38,16 @@ class Parent::AttendancesController < ApplicationController
           # TODO: flashでメッセージは入れた方がよい
           redirect_to parent_attendance_path(current_parent, attendance)
           return
+
+
+          # 削除して新たにデータを作成する流れにするのであれば
+          # 32行目のTODO 当たりから現在までのコードを全てコメントアウトor削除する
+          # その上で削除処理を盛り込めればよい
+          # tmp_attendance.destroy! # 削除完了
+          # @attendance.drop_off = Time.now
+          #if @attendance.save!
+          #  redirect_to homes_path
+          #end
         end
       end
 
@@ -68,7 +78,9 @@ class Parent::AttendancesController < ApplicationController
 
   def destroy
     @attendance = Attendance.find(params[:id])
-    redirect_to parent_attendances_path(current_parent.id), notice: '登降園情報を削除しました'
+    @attendance.destroy!
+    flash[:notice] = "登降園情報を削除しました"
+    redirect_to parent_attendances_path(current_parent.id)
     # もし間違って登園してしまった場合は、attendance/showで「取り消しボタン(destroy)でレコードを削除」を作成するとUI的に優しい
   end
 

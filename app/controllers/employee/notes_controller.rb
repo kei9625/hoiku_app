@@ -27,7 +27,8 @@ class Employee::NotesController < ApplicationController
     @note = current_employee.notes.build(note_params)
 
     if @note.save
-      redirect_to employee_note_path(@note), notice: '連絡帳を作成しました'
+      flash[:notice] = "連絡帳を作成しました。"
+      redirect_to employee_note_path(@note)
     else
       @parents = Parent.all  # 保存に失敗した場合、再度保護者の情報を取得
       render :new
@@ -40,7 +41,8 @@ class Employee::NotesController < ApplicationController
 
   def update
     if @note.update(note_params)
-      redirect_to employee_note_path(@note), notice: '連絡帳を更新しました'
+      flash[:notice] = "連絡帳を更新しました。"
+      redirect_to employee_note_path(@note)
     else
       render :edit
     end
@@ -48,7 +50,8 @@ class Employee::NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to employee_notes_path, notice: '連絡帳を削除しました'
+    flash[:notice] = "連絡帳を削除しました。"
+    redirect_to employee_notes_path
   end
 
   private

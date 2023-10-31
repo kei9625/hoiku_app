@@ -8,7 +8,8 @@ class Parent::KidsController < ApplicationController
   def create
     @kid = @parent.kids.new(kid_params)
     if @kid.save
-      redirect_to mypage_path(@parent, @kid), notice: 'お子様の情報が正常に登録されました。'
+      flash[:notice] = "お子様の情報が正常に登録されました"
+      redirect_to mypage_path(@parent, @kid)
     else
       render :new
     end
@@ -21,7 +22,8 @@ class Parent::KidsController < ApplicationController
   def update
     @kid = @parent.kids.find(params[:id])
     if @kid.update(kid_params)
-      redirect_to mypage_path(@parent, @kid), notice: 'お子様の情報が正常に更新されました。'
+      flash[:notice] = "お子様の情報が正常に更新されました"
+      redirect_to mypage_path(@parent, @kid)
     else
       render :edit
     end
@@ -30,7 +32,8 @@ class Parent::KidsController < ApplicationController
   def destroy
     @kid = @parent.kids.find(params[:id])
     @kid.destroy
-    redirect_to parent_kids_path(@parent), notice: 'お子様の情報が正常に削除されました。'
+    flash[:notice] = "お子様の情報が正常に削除されました。"
+    redirect_to parent_kids_path(@parent)
   end
 
   private

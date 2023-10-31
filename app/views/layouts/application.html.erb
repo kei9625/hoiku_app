@@ -2,41 +2,42 @@
 <html>
   <head>
     <title>HoikuApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<header>
-  <% if employee_signed_in? %>
-    <%# if controller_name == "employee" %>
-      <li><%= link_to "ログアウト", destroy_employee_session_path, method: :delete %></li>
-      <li><%= link_to "職員 マイページ", employee_mypage_path %></li>
-      <li><%= link_to 'ホームに戻る', employee_homes_path, class: 'button' %></li>
-    <%# end %>
-
-  <% elsif parent_signed_in? %>
-    <%# if controller_name == "parent" %>
-      <li><%= link_to "ログアウト", destroy_parent_session_path, method: :delete %></li>
-      <li><%= link_to "保護者 マイページ", mypage_path %></li>
-      <li><%= link_to "ホームに戻る", homes_path %> </li>
-    <%# end %>
-
-  <% else %>
-    <% if request.fullpath.include?("employee") %>
-      <li><%= link_to "職員 新規登録", new_employee_registration_path %></li>
-      <li><%= link_to "職員 ログイン", new_employee_session_path %></li>
-    <% elsif request.fullpath.include?("parent") %>
-      <li><%= link_to "保護者 新規登録", new_parent_registration_path %></li>
-      <li><%= link_to "保護者 ログイン", new_parent_session_path %></li>
-    <% end %>
-  <% end %>
-</header>
-
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning"> <!-- bg-warningはBootstrapの黄色の背景色クラスです -->
+      <a class="navbar-brand" href="#">HoikuApp</a>
+
+      <ul class="navbar-nav ml-auto">
+        <% if employee_signed_in? %>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_employee_session_path, method: :delete, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to "職員 マイページ", employee_mypage_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ホームに戻る', employee_homes_path, class: 'nav-link' %></li>
+
+        <% elsif parent_signed_in? %>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_parent_session_path, method: :delete, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to "保護者 マイページ", mypage_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to "ホームに戻る", homes_path, class: 'nav-link' %></li>
+
+        <% else %>
+          <% if request.fullpath.include?("employee") %>
+            <li class="nav-item"><%= link_to "職員 新規登録", new_employee_registration_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to "職員 ログイン", new_employee_session_path, class: 'nav-link' %></li>
+          <% elsif request.fullpath.include?("parent") %>
+            <li class="nav-item"><%= link_to "保護者 新規登録", new_parent_registration_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to "保護者 ログイン", new_parent_session_path, class: 'nav-link' %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
