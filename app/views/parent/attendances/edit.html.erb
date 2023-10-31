@@ -1,0 +1,31 @@
+<!--attendance.edit.html-->
+<h1>出席情報の編集</h1>
+
+<%= form_with(model: @attendance, url: parent_attendance_path(@attendance), method: :patch, local: true) do |f| %>
+
+  <div class="field">
+    <%= f.label :date, "日付" %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :drop_off, "登園時間" %>
+    <%= f.datetime_field :drop_off %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pick_up, "降園時間" %>
+    <%= f.datetime_field :pick_up %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note, "メモ" %>
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', parent_attendances_path(current_parent.id)%>

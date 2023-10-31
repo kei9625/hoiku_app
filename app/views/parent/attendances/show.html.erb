@@ -1,0 +1,11 @@
+<!--attendance.show.html-->
+<h1>登降園情報の詳細</h1>
+
+<p><strong>日付:</strong> <%= @attendance.date %></p>
+<p><strong>お名前:</strong> <%= @attendance.kid.first_name %></p>
+<p><strong>出席時間:</strong> <%= @attendance.drop_off %></p>
+<p><strong>退席時間:</strong> <%= @attendance.pick_up %></p>
+<p><strong>メモ:</strong> <%= @attendance.note %></p>
+
+<%= link_to '編集', edit_parent_attendance_path(@attendance) %>
+<%= link_to '一覧へ戻る', parent_attendances_path %>

@@ -1,0 +1,31 @@
+<!--attendance.index.html-->
+<h1>登降園時間の一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>名前</th>
+      <th>登園時間</th>
+      <th>降園時間</th>
+      <th>メモ</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.date %></td>
+        <td><%= attendance.kid.first_name %></td>
+        <td><%= attendance.drop_off %></td>
+        <td><%= attendance.pick_up %></td>
+        <td><%= attendance.note %></td>
+        <td>
+          <%= link_to '編集', edit_parent_attendance_path(current_parent, attendance) %>
+          <%= link_to '詳細', parent_attendance_path(current_parent, attendance) %>
+          <%= link_to '削除', parent_attendance_path(current_parent, attendance), method: :delete, data: { confirm: "削除してもよろしいですか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
