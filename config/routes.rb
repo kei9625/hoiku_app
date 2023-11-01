@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :parents, path: 'parent', controllers: {
   registrations: "parent/registrations",
   sessions: 'parent/sessions'
@@ -9,6 +8,10 @@ Rails.application.routes.draw do
   registrations: "employee/registrations",
   sessions: 'employee/sessions'
   }
+
+  devise_scope :parent do
+    get "/" => "parent/sessions#new"
+  end
 
   namespace :employee do
     resource :mypage, only: [:show, :edit, :update]
