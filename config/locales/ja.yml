@@ -196,3 +196,13 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  
+  devise:
+    sessions:
+      parent:
+        signed_in: '正常にログインしました。'
+      signed_in: '正常にログインしました。'
+    registrations:
+      parent:
+        signed_up: 'アカウントが正常に登録されました。'
+      signed_up: 'アカウントが正常に登録されました。'
