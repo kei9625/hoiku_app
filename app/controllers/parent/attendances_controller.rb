@@ -10,6 +10,13 @@ class Parent::AttendancesController < ApplicationController
 
   def update
     @attendance = Attendance.find(params[:id])
+    if @attendance.update(attendance_params)
+      flash[:notice] = "登降園情報が更新されました"
+      redirect_to parent_attendances_path(current_parent.id)
+    else
+      # 更新に失敗した場合は、編集画面を再表示
+      render :edit
+    end
   end
 
   def show
@@ -20,7 +27,6 @@ class Parent::AttendancesController < ApplicationController
     @attendance = Attendance.new(attendance_params)
     @attendance.parent_id = current_parent.id
     @attendance.date = Date.today
-
 
     # もし同じ子供で2回目のdrop_offをしているか判定する
     # find_byでデータが存在しているなら2回目とする
@@ -69,8 +75,8 @@ class Parent::AttendancesController < ApplicationController
 
 
     if @attendance.save!
-      # TODO: 詳細ページへ遷移させる？
-      redirect_to homes_path
+      # TODO: 詳細ページへ
+      redirect_to parent_attendances_path(current_parent.id)
     else
     end
   end
