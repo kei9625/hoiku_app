@@ -1,4 +1,6 @@
 class Parent::AttendancesController < ApplicationController
+  before_action :set_attendance, only: [:edit, :update, :show, :destroy]
+  before_action :check_parent, only: [:edit, :update, :show, :destroy]
 
   def index
     @attendances = Attendance.where(parent_id: current_parent.id)
@@ -91,6 +93,17 @@ class Parent::AttendancesController < ApplicationController
   end
 
   private
+
+  def set_attendance
+    @attendance = Attendance.find(params[:id])
+  end
+
+  def check_parent
+    unless @attendance.parent_id == current_parent.id
+      flash[:alert] = "アクセス権限がありません。"
+      redirect_to parent_attendances_path(current_parent.id)
+    end
+  end
 
   def attendance_params
     params.require(:attendance).permit(:kid_id, :parent_id, :employee_id, :date, :drop_off, :pick_up, :note, :status)
