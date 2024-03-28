@@ -1,4 +1,16 @@
 <!--連絡帳部分テンプレート-->
+<% if @note.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @note.errors.count %>つのエラーが発生しました:</h2>
+    <ul>
+    <% @note.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_with model: @note, url: employee_notes_path, local: true do |f| %>
   <div>
     <%= f.label :parent_id, "保護者を選択" %>
