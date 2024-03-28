@@ -1,4 +1,3 @@
-<!--attendance.index.html-->
 <h1>登降園時間の一覧</h1>
 
 <table>
@@ -15,10 +14,10 @@
   <tbody>
     <% @attendances.each do |attendance| %>
       <tr>
-        <td><%= attendance.date %></td>
+        <td><%= attendance.date.strftime("%Y/%m/%d") %></td>
         <td><%= attendance.kid.first_name %></td>
-        <td><%= attendance.drop_off %></td>
-        <td><%= attendance.pick_up %></td>
+        <td><%= attendance.formatted_drop_off %></td>
+        <td><%= attendance.formatted_pick_up %></td>
         <td><%= attendance.note %></td>
         <td>
           <%= link_to '編集', edit_parent_attendance_path(current_parent, attendance) %>
