@@ -1,33 +1,43 @@
 <!--連絡帳部分テンプレート-->
-<% if @note.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @note.errors.count %>つのエラーが発生しました:</h2>
-    <ul>
-    <% @note.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="container mt-5">
+  <% if @note.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h4><%= pluralize(@note.errors.count, "error") %>が発生しました:</h4>
+      <ul>
+      <% @note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <div class="card">
+    <div class="card-body">
+      <%= form_with model: @note, url: employee_notes_path, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :parent_id, "保護者を選択" %>
+          <%= f.collection_select :parent_id, @parents, :id, :full_name, {}, {class: "form-control"} %>
+        </div>
 
-<%= form_with model: @note, url: employee_notes_path, local: true do |f| %>
-  <div>
-    <%= f.label :parent_id, "保護者を選択" %>
-    <%= f.collection_select :parent_id, @parents, :id, :full_name %>
-  </div>
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
 
-  <div>
-    <%= f.label :タイトル %>
-    <%= f.text_field :title %>
-  </div>
+        <div class="form-group">
+          <%= f.label :content, "内容" %>
+          <%= f.text_area :content, class: "form-control", rows: 3 %>
+        </div>
 
-  <div>
-    <%= f.label :内容 %>
-    <%= f.text_area :content %>
+        <div class="form-row">
+          <div class="col">
+            <%= f.submit "送信", class: "btn btn-primary btn-block" %>
+          </div>
+          <div class="col">
+            <%= link_to '戻る', employee_notes_path, class: "btn btn-secondary btn-block" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

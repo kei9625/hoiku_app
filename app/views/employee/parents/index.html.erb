@@ -1,9 +1,21 @@
-<h1>保護者一覧</h1>
-<ul>
-  <% @parents.each do |parent| %>
-    <li>
-      <%= link_to "#{parent.last_name} #{parent.first_name} ", employee_parent_path(parent) %>
-    </li>
-  <% end %>
-  <%= link_to 'ホームに戻る', employee_homes_path, class: 'button' %>
-</ul>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1>保護者一覧</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @parents.each do |parent| %>
+            <li class="list-group-item">
+              <%= link_to "#{parent.last_name} #{parent.first_name}", employee_parent_path(parent), class: 'stretched-link' %>
+            </li>
+          <% end %>
+        </ul>
+        <div class="card-body text-center">
+          <%= link_to 'ホームに戻る', employee_homes_path, class: 'btn btn-secondary mt-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

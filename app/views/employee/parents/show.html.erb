@@ -1,14 +1,26 @@
-<h1>職員用　保護者情報::Parents#show</h1>
-<h1><%= @parent.first_name %> <%= @parent.last_name %>'s 詳細ページ</h1>
-
-<p><strong>姓：</strong><%= @parent.last_name %></p>
-<p><strong>名：</strong><%= @parent.first_name %></p>
-<p><strong>姓（カナ）：</strong><%= @parent.last_name_kana %></p>
-<p><strong>名（カナ）：</strong><%= @parent.first_name_kana %></p>
-<p><strong>郵便番号：</strong><%= @parent.postal_code %></p>
-<p><strong>住所：</strong><%= @parent.address %></p>
-<p><strong>電話番号：</strong><%= @parent.phone_number %></p>
-
-<%= link_to '情報を編集する', edit_employee_parent_path(@parent), class: 'button' %>
-
-<%= link_to '保護者一覧へ', employee_parents_path, class: 'button' %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1><%= @parent.first_name %> <%= @parent.last_name %>の詳細ページ</h1>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>姓：</strong> <%= @parent.last_name %></li>
+            <li class="list-group-item"><strong>名：</strong> <%= @parent.first_name %></li>
+            <li class="list-group-item"><strong>姓（カナ）：</strong> <%= @parent.last_name_kana %></li>
+            <li class="list-group-item"><strong>名（カナ）：</strong> <%= @parent.first_name_kana %></li>
+            <li class="list-group-item"><strong>郵便番号：</strong> <%= @parent.postal_code %></li>
+            <li class="list-group-item"><strong>住所：</strong> <%= @parent.address %></li>
+            <li class="list-group-item"><strong>電話番号：</strong> <%= @parent.phone_number %></li>
+          </ul>
+          <div class="text-center mt-4">
+            <%= link_to '情報を編集する', edit_employee_parent_path(@parent), class: 'btn btn-primary' %>
+            <%= link_to '保護者一覧へ', employee_parents_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

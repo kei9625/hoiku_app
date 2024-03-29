@@ -1,14 +1,34 @@
-<h1>Employee::Mypage#show</h1>
-<!--自分の情報の表示-->
-<h1><%= @employee.first_name %> <%= @employee.last_name %>'s Mypage</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="card-title text-center"><%= @employee.first_name %> <%= @employee.last_name %>のマイページ</h1>
 
-<p><strong>姓：</strong> <%= @employee.last_name %></p>
-<p><strong>名：</strong> <%= @employee.first_name %></p>
-<p><strong>姓（カナ）：</strong> <%= @employee.last_name_kana %></p>
-<p><strong>名（カナ）：</strong> <%= @employee.first_name_kana %></p>
-<p><strong>郵便番号：</strong> <%= @employee.postal_code %></p>
-<p><strong>住所：</strong> <%= @employee.address %></p>
-<p><strong>電話番号：</strong> <%= @employee.phone_number %></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-6"><strong>姓：</strong> <%= @employee.last_name %></div>
+                <div class="col-md-6"><strong>名：</strong> <%= @employee.first_name %></div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-6"><strong>姓（カナ）：</strong> <%= @employee.last_name_kana %></div>
+                <div class="col-md-6"><strong>名（カナ）：</strong> <%= @employee.first_name_kana %></div>
+              </div>
+            </li>
+            <li class="list-group-item"><strong>郵便番号：</strong> <%= @employee.postal_code %></li>
+            <li class="list-group-item"><strong>住所：</strong> <%= @employee.address %></li>
+            <li class="list-group-item"><strong>電話番号：</strong> <%= @employee.phone_number %></li>
+          </ul>
 
-<%= link_to 'ホームに戻る', employee_homes_path, class: 'button' %>
-<%= link_to '情報を編集する', edit_employee_mypage_path, class: 'button' %>
+          <div class="card-body text-center">
+            <%= link_to 'ホームに戻る', employee_homes_path, class: 'btn btn-secondary' %>
+            <%= link_to '情報を編集する', edit_employee_mypage_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

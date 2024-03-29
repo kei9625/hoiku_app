@@ -1,8 +1,19 @@
-<h1>Employee::Notes#index</h1>
-<h1>保護者一覧</h1>
-
-<ul>
-  <% @parents.each do |parent| %>
-    <li><%= link_to parent.full_name, parent_notes_employee_notes_path(parent) %></li>
-  <% end %>
-</ul>
+<!--<h1>Employee::Notes#index</h1>-->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1>連絡帳保護者一覧</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @parents.each do |parent| %>
+            <li class="list-group-item">
+              <%= link_to parent.full_name, parent_notes_employee_notes_path(parent), class: 'stretched-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

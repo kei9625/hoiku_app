@@ -1,48 +1,61 @@
-<h1>Employee::Parents#edit</h1>
-<h1>職員用　保護者情報の編集</h1>
+<!--Employee::Parents#edit-->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1>保護者情報の編集</h1>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @parent, url: employee_parent_path(@parent), method: :patch, local: true do |f| %>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= f.label :last_name, "姓：" %>
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :first_name, "名：" %>
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>
+            </div>
 
-<%= form_with model: @parent, url: employee_parent_path(@parent), method: :patch do |f| %>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= f.label :last_name_kana, "姓（カナ）：" %>
+                <%= f.text_field :last_name_kana, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :first_name_kana, "名（カナ）：" %>
+                <%= f.text_field :first_name_kana, class: 'form-control' %>
+              </div>
+            </div>
 
-  <p>
-    <label for="last_name">姓：</label>
-    <%= f.text_field :last_name %>
-  </p>
+            <div class="form-group">
+              <%= f.label :postal_code, "郵便番号：" %>
+              <%= f.text_field :postal_code, class: 'form-control' %>
+            </div>
 
-  <p>
-    <label for="first_name">名：</label>
-    <%= f.text_field :first_name %>
-  </p>
+            <div class="form-group">
+              <%= f.label :address, "住所：" %>
+              <%= f.text_field :address, class: 'form-control' %>
+            </div>
 
-  <p>
-    <label for="last_name_kana">姓（カナ）：</label>
-    <%= f.text_field :last_name_kana %>
-  </p>
+            <div class="form-group">
+              <%= f.label :phone_number, "電話番号：" %>
+              <%= f.text_field :phone_number, class: 'form-control' %>
+            </div>
 
-  <p>
-    <label for="first_name_kana">名（カナ）：</label>
-    <%= f.text_field :first_name_kana %>
-  </p>
-
-  <p>
-    <label for="postal_code">郵便番号：</label>
-    <%= f.text_field :postal_code %>
-  </p>
-
-  <p>
-    <label for="address">住所：</label>
-    <%= f.text_field :address %>
-  </p>
-
-  <p>
-    <label for="phone_number">電話番号：</label>
-    <%= f.text_field :phone_number %>
-  </p>
-
-  <div class="actions">
-    <%= f.submit "登録情報更新" %>
+            <div class="form-row text-center">
+              <div class="col-md-6">
+                <%= f.submit "登録情報更新", class: 'btn btn-primary btn-block' %>
+              </div>
+              <div class="col-md-6">
+                <%= link_to '詳細ページに戻る', employee_parent_path(@parent), class: 'btn btn-secondary btn-block' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <%= link_to '詳細ページに戻る', employee_parent_path(@parent), class: 'button' %>
-
-
-<% end %>
+</div>
