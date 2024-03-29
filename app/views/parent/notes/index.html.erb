@@ -1,23 +1,36 @@
-<h1>Parent::Notes#index</h1>
-<h1>連絡帳一覧</h1>
-
-<%= link_to '新しい連絡帳を作成', new_note_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @notes.each do |note| %>
-      <tr>
-        <td><%= link_to note.title, note_path(note) %></td>
-        <td>
-          <%= link_to '編集', edit_note_path(note) %> |
-          <%= link_to '削除', note_path(note), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--<h1>Parent::Notes#index</h1>-->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-header">
+          <h1 class="text-center">連絡帳一覧</h1>
+        </div>
+        <div class="card-body">
+          <%= link_to '新しい連絡帳を作成', new_note_path, class: 'btn btn-primary mb-3' %>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">タイトル</th>
+                  <th scope="col">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @notes.each do |note| %>
+                  <tr>
+                    <td><%= link_to note.title, note_path(note) %></td>
+                    <td>
+                      <%= link_to '編集', edit_note_path(note), class: 'btn btn-outline-primary btn-sm' %> |
+                      <%= link_to '削除', note_path(note), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-outline-danger btn-sm' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
