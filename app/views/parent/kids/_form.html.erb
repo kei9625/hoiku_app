@@ -1,56 +1,62 @@
-<!--部分テンプレート　_form.html.erb-->
-<% if @kid.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@kid.errors.count, "error") %> <%= t('errors.prohibited_this_kid_from_being_saved') %></h2>
-    <ul>
-      <% @kid.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<!--部分テンプレート-->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <% if f.object.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+              <h4 class="alert-heading"><%= pluralize(f.object.errors.count, "error") %> prohibited this kid from being saved:</h4>
+              <ul>
+                <% f.object.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :last_name, '姓' %>
+              <%= f.text_field :last_name, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group col-md-6">
+              <%= f.label :first_name, '名' %>
+              <%= f.text_field :first_name, class: 'form-control', required: true %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :last_name_kana, 'セイ' %>
+              <%= f.text_field :last_name_kana, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group col-md-6">
+              <%= f.label :first_name_kana, 'メイ' %>
+              <%= f.text_field :first_name_kana, class: 'form-control', required: true %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :birth_date, '生年月日' %>
+            <%= f.date_select :birth_date, start_year: Date.today.year - 10, end_year: Date.today.year, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :gender, '性別' %>
+            <%= f.select :gender, ['男', '女'], { include_blank: '性別を選択' }, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :allergy_info, 'アレルギーの有無' %>
+            <%= f.text_area :allergy_info, class: 'form-control' %>
+          </div>
+
+          <div class="actions text-center">
+            <%= f.submit '登録する', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-
-
-  <div class="field">
-      <%= f.label :性 %>
-      <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-      <%= f.label :名 %>
-      <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-      <%= f.label :セイ %>
-      <%= f.text_field :last_name_kana %>
-  </div>
-
-  <div class="field">
-      <%= f.label :メイ %>
-      <%= f.text_field :first_name_kana %>
-  </div>
-
-  <div class="field">
-      <%= f.label :生年月日 %>
-      <%= f.date_select :birth_date %>
-  </div>
-
-  <div class="field">
-      <%= f.label :性別 %>
-      <%= f.select :gender, ['男', '女'], prompt: '性別を選択' %>
-  </div>
-
-  <div class="field">
-      <%= f.label :アレルギーの有無 %>
-      <%= f.text_area :allergy_info %>
-  </div>
-
-  <!--<div class="field">-->
-  <!--  %= f.label :health_info %>-->
-  <!--  %= f.text_area :health_info %>-->
-  <!--</div>-->
-
-  <div class="actions">
-      <%= f.submit %>
-  </div>
+</div>
