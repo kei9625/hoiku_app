@@ -1,30 +1,41 @@
-<h1>出席情報の編集</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1>出席情報の編集</h1>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: @attendance, url: parent_attendance_path(@attendance), method: :patch, local: true) do |f| %>
+            <div class="form-group">
+              <%= f.label :date, "日付" %>
+              <%= f.date_field :date, class: 'form-control' %>
+            </div>
 
-<%= form_with(model: @attendance, url: parent_attendance_path(@attendance), method: :patch, local: true) do |f| %>
+            <div class="form-group">
+              <%= f.label :drop_off, "登園時間" %>
+              <%= f.datetime_field :drop_off, class: 'form-control' %>
+            </div>
 
-  <div class="field">
-    <%= f.label :date, "日付" %>
-    <%= f.date_field :date %>
+            <div class="form-group">
+              <%= f.label :pick_up, "降園時間" %>
+              <%= f.datetime_field :pick_up, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :note, "メモ" %>
+              <%= f.text_area :note, class: 'form-control' %>
+            </div>
+
+            <div class="form-group text-center">
+              <%= f.submit "更新", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to '戻る', parent_attendances_path(current_parent.id), class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :drop_off, "登園時間" %>
-    <%= f.datetime_field :drop_off %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pick_up, "降園時間" %>
-    <%= f.datetime_field :pick_up %>
-  </div>
-
-  <div class="field">
-    <%= f.label :note, "メモ" %>
-    <%= f.text_area :note %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-
-<%= link_to '戻る', parent_attendances_path(current_parent.id)%>
+</div>

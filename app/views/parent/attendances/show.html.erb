@@ -1,10 +1,33 @@
-<h1>登降園情報の詳細</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1>登降園情報の詳細</h1>
+        </div>
+        <div class="card-body">
+          <dl class="row">
+            <dt class="col-sm-3">日付:</dt>
+            <dd class="col-sm-9"><%= @attendance.date.strftime("%Y/%m/%d") %></dd>
 
-<p><strong>日付:</strong> <%= @attendance.date %></p>
-<p><strong>お名前:</strong> <%= @attendance.kid.first_name %></p>
-<p><strong>出席時間:</strong> <%= @attendance.drop_off %></p>
-<p><strong>退席時間:</strong> <%= @attendance.pick_up %></p>
-<p><strong>メモ:</strong> <%= @attendance.note %></p>
+            <dt class="col-sm-3">お名前:</dt>
+            <dd class="col-sm-9"><%= @attendance.kid.first_name %></dd>
 
-<%= link_to '編集', edit_parent_attendance_path(@attendance) %>
-<%= link_to '一覧へ戻る', parent_attendances_path %>
+            <dt class="col-sm-3">出席時間:</dt>
+            <dd class="col-sm-9"><%= @attendance.formatted_drop_off %></dd>
+
+            <dt class="col-sm-3">退席時間:</dt>
+            <dd class="col-sm-9"><%= @attendance.formatted_pick_up %></dd>
+
+            <dt class="col-sm-3">メモ:</dt>
+            <dd class="col-sm-9"><%= @attendance.note %></dd>
+          </dl>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to '編集', edit_parent_attendance_path(@attendance), class: 'btn btn-primary' %>
+          <%= link_to '一覧へ戻る', parent_attendances_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
