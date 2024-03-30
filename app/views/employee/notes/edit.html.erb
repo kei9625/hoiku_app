@@ -1,6 +1,19 @@
-<h1>Employee::Notes#edit</h1>
-<h1>連絡帳を編集: <%= @note.title %></h1>
-
-<%= render 'form' %>
-
-<%= link_to '戻る', employee_notes_path %>
+<!--<h1>Employee::Notes#edit</h1>-->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1>連絡帳を編集</h1>
+        </div>
+        <div class="card-body">
+          <h2 class="text-center mb-4"><%= @note.title %></h2>
+          <%= render 'form' %>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to '戻る', employee_notes_path, class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

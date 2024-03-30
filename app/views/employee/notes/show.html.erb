@@ -1,9 +1,20 @@
-
-<h1>Employee::Notes#show</h1>
-<h1><%= @note.title %> (作成者: <%= @note.creator.full_name %>)</h1>
-
-<p><strong>内容:</strong> <%= @note.content %></p>
-
-<%= link_to '戻る', employee_notes_path %>
-<%= link_to '削除', employee_note_path(@note), method: :delete, data: { confirm: '連絡帳を削除してもよろしいですか？' } %>
-<%= link_to '編集', edit_employee_note_path(@note) %>
+<!--<h1>Employee::Notes#show</h1>-->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h1><%= @note.title %> (作成者: <%= @note.creator.full_name %>)</h1>
+        </div>
+        <div class="card-body">
+          <p><strong>内容:</strong> <%= @note.content %></p>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to '編集', edit_employee_note_path(@note), class: 'btn btn-primary' %>
+          <%= link_to '削除', employee_note_path(@note), method: :delete, data: { confirm: '連絡帳を削除してもよろしいですか？' }, class: 'btn btn-danger' %>
+          <%= link_to '戻る', employee_notes_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
