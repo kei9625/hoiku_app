@@ -20,15 +20,10 @@
 - 現在紙で管理している物をデジタル化し、調べたい事を検索する時<br>
 - 連絡等をデジタルで統一したい時<br>
 
-## 設計書<br>
-後ほど作成予定
-​
+
 ## 開発環境<br>
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材<br>
-後ほど記述予定
